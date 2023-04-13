@@ -12,7 +12,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import server.models.Course;
 
-
+/**
+ * Classe permettant l'affichage graphique
+ */
 public class Vue {
 
     public TableView<Course> table;
@@ -28,11 +30,21 @@ public class Vue {
     private TextField Email = new TextField();
     private TextField Matricule = new TextField();
 
-
+    /**
+     *
+     * @param port ; entré de connection au serveur
+     * Constructeur
+     */
     public Vue(int port){
         creerVue(port);
     }
 
+    /**
+     *Créé l'interface graphique du serveur, bouton pour charger la session, table pour choisir un cour etc...
+     *intéragie avec le controlleur.
+     * @param port ; entré de connection au serveur
+     *
+     */
     public void creerVue(int port) {
         try{
 
@@ -153,11 +165,8 @@ public class Vue {
 
                 table.setOnMouseClicked(event -> {
                     if (event.getClickCount() >= 1) {
-                        //String selectedItem = table.getSelectionModel().getSelectedItem().getCode();
                         chargerClic = true;
                         coursSelec = true;
-                        //System.out.println(selectedItem);
-
                     }
                 });
 
@@ -217,6 +226,7 @@ public class Vue {
         e.printStackTrace();
     }
     }
+
     private void erreur(String messageErreur){
         Stage errorStage = new Stage();
         Label errorMessage = new Label(messageErreur);
